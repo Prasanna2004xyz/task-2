@@ -1,1 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {\n    const addButton = document.getElementById('add-task');\n    const taskInput = document.getElementById('task-input');\n    const taskList = document.getElementById('task-list');\n\n    addButton.addEventListener('click', () => {\n        const taskText = taskInput.value;\n        if (taskText) {\n            const listItem = document.createElement('li');\n            listItem.textContent = taskText;\n            const removeButton = document.createElement('button');\n            removeButton.textContent = 'Remove';\n            removeButton.addEventListener('click', () => {\n                taskList.removeChild(listItem);\n            });\n            listItem.appendChild(removeButton);\n            listItem.addEventListener('click', () => {\n                listItem.classList.toggle('completed');\n            });\n            taskList.appendChild(listItem);\n            taskInput.value = '';\n        }\n    });\n});
+document.addEventListener('DOMContentLoaded', () => {
+    const addButton = document.getElementById('add-task');
+    const taskInput = document.getElementById('task-input');
+    const taskList = document.getElementById('task-list');
+
+    addButton.addEventListener('click', () => {
+        const taskText = taskInput.value;
+
+        if (taskText) {
+            const listItem = document.createElement('li');
+            listItem.textContent = taskText;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+
+            removeButton.addEventListener('click', () => {
+                taskList.removeChild(listItem);
+            });
+
+            listItem.appendChild(removeButton);
+
+            listItem.addEventListener('click', () => {
+                listItem.classList.toggle('completed');
+            });
+
+            taskList.appendChild(listItem);
+            taskInput.value = '';
+        }
+    });
+});
